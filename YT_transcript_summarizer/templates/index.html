@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YouTube Video Summary</title>
+    {% load static %}
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Summary Tool</h1>
+        <form id="youtubeForm" method="POST">
+            {% csrf_token %}
+            <input type="url" id="youtubeLink" name="youtube_link" placeholder="Enter YouTube link here" required>
+            <button type="submit">Get Summary</button>
+        </form>
+
+        <div class="transcript" id="transcript">
+            {% if transcript %}
+                <p>{{ transcript }}</p>
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 - Simple Summary Tool</p>
+        </div>
+    </div>
+
+</body>
+</html>
