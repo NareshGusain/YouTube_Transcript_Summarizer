@@ -1,6 +1,6 @@
 # YouTube_Transcript_Summarizer
 
-A Django webapp that takes Youtube link as  an input and returns the quick summary for ti
+A Django webapp that takes Youtube link as  an input and returns the quick summary for it.
 
 ## Installation
 

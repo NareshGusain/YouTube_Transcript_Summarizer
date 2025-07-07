@@ -3,30 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>YouTube Video Summary</title>
+    <title>YouTube Transcript Summarizer</title>
     {% load static %}
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>YouTube Summary Tool</h1>
-        <form id="youtubeForm" method="POST">
+    <nav class="navbar">
+        <div class="nav-logo">🎬 YT Summarizer</div>
+        <ul class="nav-links">
+            <li><a href="#how-to-use">How to Use</a></li>
+            <li><a href="#how-it-helps">How it Helps</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#apps">Apps</a></li>
+        </ul>
+        <div class="nav-auth">
+            <a href="#" class="nav-btn">Login</a>
+            <a href="#" class="nav-btn nav-btn-outline">Logout</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">YouTube Transcript Summarizer</h1>
+        <p class="hero-subtitle">
+            Instantly generate concise summaries from any YouTube video.  
+            <br>Paste a link, click summarize, and save time!
+        </p>
+        <form id="youtubeForm" method="POST" class="hero-form">
             {% csrf_token %}
-            <input type="url" id="youtubeLink" name="youtube_link" placeholder="Enter YouTube link here" required>
-            <button type="submit">Get Summary</button>
+            <input type="url" id="youtubeLink" name="youtube_link" placeholder="Paste YouTube link here..." required>
+            <button type="submit">Summarize</button>
         </form>
-
+        {% if transcript %}
         <div class="transcript" id="transcript">
-            {% if transcript %}
-                <p>{{ transcript }}</p>
-            {% endif %}
+            <h2>📝 Summary</h2>
+            <p>{{ transcript }}</p>
         </div>
+        {% endif %}
+    </section>
 
-        <div class="footer">
-            <p>&copy; 2024 - Simple Summary Tool</p>
-        </div>
-    </div>
+    <section class="info-section" id="how-to-use">
+        <h2>How It Works</h2>
+        <ol>
+            <li>Paste any valid YouTube video link above.</li>
+            <li>Click <b>Summarize</b>.</li>
+            <li>Get a clean, AI-powered summary instantly.</li>
+        </ol>
+    </section>
 
+    <section class="info-section" id="how-it-helps">
+        <h2>How It Helps</h2>
+        <ul>
+            <li>Save time by reading summaries instead of watching full videos.</li>
+            <li>Quickly review educational content, lectures, or tutorials.</li>
+            <li>Perfect for students, professionals, and lifelong learners.</li>
+        </ul>
+    </section>
+
+    <section class="info-section" id="about">
+        <h2>About</h2>
+        <p>
+            <b>YouTube Transcript Summarizer</b> is a free, privacy-friendly tool that uses AI to extract and summarize YouTube video transcripts. No sign-up required.
+        </p>
+    </section>
+
+    <section class="info-section" id="apps">
+        <h2>Apps</h2>
+        <p>
+            Coming soon: Chrome Extension, Android & iOS Apps!
+        </p>
+    </section>
+
+    <footer class="footer">
+        &copy; 2024 • Built with ❤️ by Shrusti • <a href="mailto:contact@example.com">Contact</a>
+    </footer>
 </body>
 </html>
